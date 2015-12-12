@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
    bzero(&server,length);
    server.sin_family=AF_INET;
    server.sin_addr.s_addr=INADDR_ANY;
-   server.sin_port=htons(31000);
+   server.sin_port=htons(5060);
    if (bind(sock,(struct sockaddr *)&server,length)<0) 
        error("binding");
    fromlen = sizeof(struct sockaddr_in);
