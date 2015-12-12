@@ -32,15 +32,17 @@ int main(int argc, char *argv[])
    bzero(&server,length);
    server.sin_family=AF_INET;
    server.sin_addr.s_addr=INADDR_ANY;
-   server.sin_port=htons(5060);
+   server.sin_port=htons(6000);
    if (bind(sock,(struct sockaddr *)&server,length)<0) 
        error("binding");
    fromlen = sizeof(struct sockaddr_in);
+   int i = 0;
    while (1) {
        n = recvfrom(sock,buf,1024,0,(struct sockaddr *)&from,&fromlen);
        if (n < 0) error("recvfrom");
        write(1,"Received a datagram: ",21);
        write(1,buf,n);
+       printf("Received request %d\n",++i);
        n = sendto(sock,"Got your message\n",17,
                   0,(struct sockaddr *)&from,fromlen);
        if (n  < 0) error("sendto");
