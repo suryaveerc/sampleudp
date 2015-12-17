@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER chauhan.suryaveer@gmail.com
 
-RUN apt-get update -y && apt-get install -y gcc
+RUN apt-get update -y && apt-get install -y gcc tcpdump
 RUN echo "HELLO"
 
 EXPOSE 6000/UDP
