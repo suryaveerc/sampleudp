@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 {
    int sock, length, n;
    char* host;
-   host = getenv("USER");
+   host = getenv("HOSTNAME");
    socklen_t fromlen;
    struct sockaddr_in server;
    struct sockaddr_in from;
