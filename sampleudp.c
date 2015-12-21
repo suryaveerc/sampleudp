@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
    struct sockaddr_in server;
    struct sockaddr_in from;
    char buf[1024];
-   char msg[30]= "Got your message ";
+   char msg[50]= "Got your message ";
    strcat(msg,host);
    int len;
    len=strlen(msg);
