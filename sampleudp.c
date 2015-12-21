@@ -20,12 +20,19 @@ void error(const char *msg)
 int main(int argc, char *argv[])
 {
    int sock, length, n;
+   char* host;
+   host = getenv("USER");
    socklen_t fromlen;
    struct sockaddr_in server;
    struct sockaddr_in from;
    char buf[1024];
-
-   
+   char msg[30]= "Got your message ";
+   strcat(msg,host);
+   int len;
+   len=strlen(msg);
+   msg[len] = '\n';
+   len+=1;
+//printf("User is: %s",msg);   
    sock=socket(AF_INET, SOCK_DGRAM, 0);
    if (sock < 0) error("Opening socket");
    length = sizeof(server);
@@ -43,7 +50,7 @@ int main(int argc, char *argv[])
        write(1,"Received a datagram: ",21);
        write(1,buf,n);
        printf("Received request %d\n",++i);
-       n = sendto(sock,"Got your message\n",17,
+       n = sendto(sock,msg,len,
                   0,(struct sockaddr *)&from,fromlen);
        if (n  < 0) error("sendto");
    }
